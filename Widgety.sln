@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Widgety", "Widgety\Widgety.njsproj", "{8728255C-E2F7-4225-A5D6-4360092E2063}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8728255C-E2F7-4225-A5D6-4360092E2063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8728255C-E2F7-4225-A5D6-4360092E2063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8728255C-E2F7-4225-A5D6-4360092E2063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8728255C-E2F7-4225-A5D6-4360092E2063}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54472988-E956-4F0E-9106-9CA225FCBAC9}
+	EndGlobalSection
+EndGlobal
