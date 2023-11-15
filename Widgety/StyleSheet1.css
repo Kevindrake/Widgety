@@ -1,6 +1,7 @@
 title{
     font-size:30px;
-    animation: colorChange 5s infinite
+    animation: colorChange 5s infinite;
+
 }
 
 @keyframes colorChange{
@@ -32,6 +33,7 @@ body {
 h1{
     font-size:24px;
     color:darkblue;
+    animation: colorChange 5s infinite;
 }
 
 weather-app{
