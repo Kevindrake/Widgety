@@ -74,14 +74,35 @@
 
             <h1>Weather App</h1>
 
+            <form id="city-form">
+                <label for="city-input">Enter City:</label>
+                <input type="text" id="city-input" name="city" required>
+                <button type="submit">Get Weather</button>
+            </form>
+
             <p>Loading weather data...</p>
 
 
             <script>
-                const apiKey = '0641705d9454b5aea687b2d6f0cda988'; //  API key
-                const city = 'Puerto Rico'; //  desired city
 
-                const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+                document.getElementById('city-form').addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    // Get the user-input city from the form
+                    const userCity = document.getElementById('city-input').value.trim();
+
+                    // Update the city variable and fetch weather data
+                    updateWeather(userCity);
+                });
+
+                function updateWeather(city) {
+
+                    const apiKey = '0641705d9454b5aea687b2d6f0cda988'; //  API key
+                    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+                }
+                     
+
 
                 fetch(apiUrl)
                     .then((response) => response.json())
@@ -94,8 +115,8 @@
 
                         const weatherData =
                             '<p>City: ${data.name}</p>'
-                        '<p>Temperature: ${data.main.temp}°C</p>'
-                        '<p>Weather: ${data.weather[0].description}</p>';
+                            '<p>Temperature: ${data.main.temp}°C</p>'
+                            '<p>Weather: ${data.weather[0].description}</p>';
 
                         document.getElementById('weather-data').innerHTML = weatherData;
                     })
