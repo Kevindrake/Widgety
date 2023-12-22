@@ -65,57 +65,103 @@
             animation: colorChange 5s infinite;
         }
 
+        .arrow-button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .widget-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .widget {
+
+            width: 100%;
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .widget-hidden {
+
+            transform: translateY(100%);
+        }
+
+
     </style>
 </head>
 <body>
     <main>
-        <div id="weather-app">
-            <h1>Weather App</h1>
-            <form id="city-form">
-                <label for="city-input">Enter City:</label>
-                <input type="text" id="city-input" name="city" required>
-                <button type="submit">Get Weather</button>
-            </form>
-            <div id="weather-data">
-                <p>Loading weather data...</p>
+
+        <div class="widget-container">
+
+            <div id="weather-app" class="widget">
+
+                <h1>Weather App</h1>
+
+                <form id="city-form">
+                    <label for="city-input">Enter City:</label>
+                    <input type="text" id="city-input" name="city" required>
+                    <button type="submit">Get Weather</button>
+                </form>
+                <div id="weather-data">
+                    <p>Loading weather data...</p>
+                </div>
+                <script>
+                    document.getElementById('city-form').addEventListener('submit', function (event) {
+                        event.preventDefault();
+                        const userCity = document.getElementById('city-input').value.trim();
+                        updateWeather(userCity);
+                    });
+
+                    function updateWeather(userCity) {
+                        const apiKey = '0641705d9454b5aea687b2d6f0cda988'; // API key
+                        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
+
+                        fetch(apiUrl)
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                                if (data.cod === '404') {
+                                    throw new Error('City not found');
+                                }
+
+                                const weatherData = `
+                                                                        <p>City: ${data.name}</p>
+                                                                        <p>Temperature: ${data.main.temp}°F</p>
+                                                                        <p>Weather: ${data.weather[0].description}</p>
+                                                                        <p>Humidity: ${data.main.humidity}%</p>
+                                                                        <p>Wind Speed: ${data.wind.speed} m/s</p>
+                                                                        <p>Visibility: ${data.visibility} meters</p>
+                                                                        <p>Pressure: ${data.main.pressure} hPa</p> `;
+
+                                document.getElementById('weather-data').innerHTML = weatherData;
+                            })
+                            .catch((error) => {
+                                console.error('Error fetching weather data:', error);
+                                document.getElementById('weather-data').innerHTML = 'Error fetching weather data';
+                            });
+                    }
+                </script>
             </div>
-            <script>
-                document.getElementById('city-form').addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    const userCity = document.getElementById('city-input').value.trim();
-                    updateWeather(userCity);
-                });
 
-                function updateWeather(userCity) {
-                    const apiKey = '0641705d9454b5aea687b2d6f0cda988'; // API key
-                    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
 
-                    fetch(apiUrl)
-                        .then((response) => response.json())
-                        .then((data) => {
-                            console.log(data);
-                            if (data.cod === '404') {
-                                throw new Error('City not found');
-                            }
+            <div id="calculator" class="widget widget-hidden">
 
-                            const weatherData = `
-                                            <p>City: ${data.name}</p>
-                                            <p>Temperature: ${data.main.temp}°F</p>
-                                            <p>Weather: ${data.weather[0].description}</p>
-                                            <p>Humidity: ${data.main.humidity}%</p>
-                                            <p>Wind Speed: ${data.wind.speed} m/s</p>
-                                            <p>Visibility: ${data.visibility} meters</p>
-                                            <p>Pressure: ${data.main.pressure} hPa</p> `;
 
-                            document.getElementById('weather-data').innerHTML = weatherData;
-                        })
-                        .catch((error) => {
-                            console.error('Error fetching weather data:', error);
-                            document.getElementById('weather-data').innerHTML = 'Error fetching weather data';
-                        });
-                }
-            </script>
+
+            </div>
+
         </div>
+
+        <button class="arrow-button" onclick="toggleWidgets('left')">Left Arrow</button>
+        <button class="arrow-button" onclick="toggleWidgets('right')">Right Arrow</button>
+
     </main>
 </body>
 </html>
