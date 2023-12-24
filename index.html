@@ -147,13 +147,13 @@
                                 }
 
                                 const weatherData = `
-                                                                        <p>City: ${data.name}</p>
-                                                                        <p>Temperature: ${data.main.temp}°F</p>
-                                                                        <p>Weather: ${data.weather[0].description}</p>
-                                                                        <p>Humidity: ${data.main.humidity}%</p>
-                                                                        <p>Wind Speed: ${data.wind.speed} m/s</p>
-                                                                        <p>Visibility: ${data.visibility} meters</p>
-                                                                        <p>Pressure: ${data.main.pressure} hPa</p> `;
+                                                                                        <p>City: ${data.name}</p>
+                                                                                        <p>Temperature: ${data.main.temp}°F</p>
+                                                                                        <p>Weather: ${data.weather[0].description}</p>
+                                                                                        <p>Humidity: ${data.main.humidity}%</p>
+                                                                                        <p>Wind Speed: ${data.wind.speed} m/s</p>
+                                                                                        <p>Visibility: ${data.visibility} meters</p>
+                                                                                        <p>Pressure: ${data.main.pressure} hPa</p> `;
 
                                 document.getElementById('weather-data').innerHTML = weatherData;
                             })
@@ -174,9 +174,30 @@
 
         </div>
 
-        <button class="arrow-button" onclick="toggleWidgets('left')">Left Arrow</button>
+        <button class="arrow-button" onclick="toggleWidgets('left')">
+
+            <img src="Left Arrow.png"/>
+
+            Left Arrow
+
+        </button>
         <button class="arrow-button" onclick="toggleWidgets('right')">Right Arrow</button>
 
-    </main>
-</body>
-</html>
+        <script>
+            function toggleWidgets(direction) {
+                const widget1 = document.getElementById('widget1');
+                const widget2 = document.getElementById('widget2');
+
+                if (direction === 'left') {
+                    widget1.classList.remove('widget-hidden');
+                    widget2.classList.add('widget-hidden');
+                } else if (direction === 'right') {
+                    widget1.classList.add('widget-hidden');
+                    widget2.classList.remove('widget-hidden');
+                }
+            }
+        </script>
+
+     </main >
+</body >
+</html >
