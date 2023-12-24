@@ -29,6 +29,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="Left Arrow.png" />
     <Content Include="Main.html">
       <SubType>Code</SubType>
     </Content>
