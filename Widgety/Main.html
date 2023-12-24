@@ -53,6 +53,8 @@
             background-color: aquamarine;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             color: white;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         #weather-data {
@@ -78,6 +80,7 @@
             height: 300px;
             border: 1px solid #ccc;
             overflow: hidden;
+            margin: 0;
         }
 
         .widget {
@@ -92,6 +95,18 @@
             transform: translateY(100%);
         }
 
+        label {
+            display: block; /* Ensure label takes full width */
+            margin-bottom: 5px; /* Add some space below the label */
+        }
+
+        input, button {
+            margin-top: 5px; /* Add some space above the input and button */
+        }
+
+        form {
+            margin-top: 10px; /* Add some space above the form */
+        }
 
     </style>
 </head>
